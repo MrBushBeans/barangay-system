@@ -1,5 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Barangay Resident and Request System</title></head>
-  <body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barangay Resident and Request System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Barangay Resident and Request System</h1>
+  <p id="error" class="error"></p>
+
+  <h2>Dashboard</h2>
+  <p>Total residents: <span id="stat-residents">0</span> |
+     Pending requests: <span id="stat-pending">0</span> |
+     Released requests: <span id="stat-released">0</span></p>
+
+  <h2 id="resident-heading">Register resident</h2>
+  <form id="resident-form">
+    <input name="firstName" placeholder="First name" required>
+    <input name="lastName" placeholder="Last name" required>
+    <input name="birthdate" type="date" required>
+    <select name="sex"><option>Male</option><option>Female</option></select>
+    <input name="purok" placeholder="Purok" required>
+    <input name="address" placeholder="Address">
+    <input name="contactNumber" placeholder="Contact number">
+    <button type="submit" id="resident-submit">Add resident</button>
+    <button type="button" id="resident-cancel" class="hidden">Cancel</button>
+  </form>
+
+  <h2>Residents</h2>
+  <input id="search" placeholder="Search by name">
+  <table>
+    <thead><tr><th>Name</th><th>Birthdate</th><th>Sex</th><th>Purok</th><th>Contact</th><th>Actions</th></tr></thead>
+    <tbody id="resident-rows"></tbody>
+  </table>
+
+  <h2>New document request</h2>
+  <form id="request-form">
+    <select name="resident" id="request-resident" required></select>
+    <select name="type">
+      <option>Barangay Clearance</option>
+      <option>Certificate of Residency</option>
+      <option>Certificate of Indigency</option>
+    </select>
+    <input name="purpose" placeholder="Purpose">
+    <button type="submit">Create request</button>
+  </form>
+
+  <h2>Requests</h2>
+  <table>
+    <thead><tr><th>Resident</th><th>Type</th><th>Purpose</th><th>Status</th></tr></thead>
+    <tbody id="request-rows"></tbody>
+  </table>
+
+  <script src="app.js"></script>
+</body>
 </html>

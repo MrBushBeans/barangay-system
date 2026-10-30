@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static(require('path').join(__dirname, '../client')));
 
 // ---------- Models ----------
 const required = (type) => ({ type, required: true, trim: true });
